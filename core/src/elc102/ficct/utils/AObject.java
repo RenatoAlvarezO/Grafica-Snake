@@ -1,5 +1,6 @@
 package elc102.ficct.utils;
 
+import elc102.ficct.props.Grid;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 
@@ -50,11 +51,22 @@ public abstract class AObject {
     this.yGridPosition = y;
   }
 
-  public void draw(SpriteBatch batch, int x, int y){
-    batch.draw(texture, x, y);
+  public void draw(SpriteBatch batch, Grid grid) {
+    int x = grid.getXPosition(this.xGridPosition);
+    int y = grid.getYPosition(this.yGridPosition);
+
+    int width = grid.getCellWidth();
+    int height = grid.getCellHeight();
+
+    batch.draw(texture, x, y, width, height);
   }
 
-  public void dispose(){
+  public void dispose() {
     texture.dispose();
+  }
+
+  public static boolean areColliding(AObject first, AObject second) {
+    return first.getxGridPosition() == second.getxGridPosition()
+        && first.getyGridPosition() == second.getyGridPosition();
   }
 }

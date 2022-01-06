@@ -40,15 +40,14 @@ public class Grid {
 
   public void recalculateCellDimentions() {
     this.cellWidth = Gdx.graphics.getWidth() / rowCount;
-
     this.cellHeight = Gdx.graphics.getHeight() / columnCount;
   }
-
-  public int getXPosition(int x) {
-    return rowCount * x; 
+// Hay algo raro con esta logica
+   public int getXPosition(int x) {
+    return cellWidth * x; 
   }
 
   public int getYPosition(int y) {
-    return columnCount * y;
+    return cellHeight * y;
   }
 }

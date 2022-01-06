@@ -11,4 +11,8 @@ public class Food extends AObject {
   public Food(Texture texture) {
     super(texture);
   }
+
+  public Food(int xGridPosition, int yGridPosition){
+    super(new Texture("apple.png"), xGridPosition, yGridPosition);
+  }
 }
