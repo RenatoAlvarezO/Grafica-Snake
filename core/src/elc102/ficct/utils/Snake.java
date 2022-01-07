@@ -15,9 +15,12 @@ public class Snake {
 
   int currentDirection = 0;
 
-  public Snake(int xGridPosition, int yGridPosition) {
+  Grid grid;
+
+  public Snake(int xGridPosition, int yGridPosition, Grid grid) {
     this.snakeBodyList = new LinkedList<>();
     this.snakeBodyList.add(new SnakePart(xGridPosition, yGridPosition));
+    this.grid = grid;
   }
 
   public void addToGridPosition(int x, int y) {
@@ -42,7 +45,7 @@ public class Snake {
     snakeHead.setGridPosition(x, y);
   }
 
-  public void draw(SpriteBatch batch, Grid grid) {
+  public void draw(SpriteBatch batch) {
     for (SnakePart snakePart : snakeBodyList)
       snakePart.draw(batch, grid);
   }
@@ -71,14 +74,35 @@ public class Snake {
 
   public void updatePosition() {
 
-    if (currentDirection == InputController.UP)
-      this.addToGridPosition(0, 1);
-    if (currentDirection == InputController.DOWN)
-      this.addToGridPosition(0, -1);
-    if (currentDirection == InputController.LEFT)
-      this.addToGridPosition(-1, 0);
-    if (currentDirection == InputController.RIGHT)
-      this.addToGridPosition(1, 0);
+    SnakePart snakeHead = snakeBodyList.get(0);
+    if (currentDirection == InputController.UP) {
+      if (snakeHead.getyGridPosition() > grid.getRowCount())
+        snakeHead.setyGridPosition(0);
+      else
+        this.addToGridPosition(0, 1);
+      return;
+    }
+    if (currentDirection == InputController.DOWN) {
+      if (snakeHead.getyGridPosition() < 0)
+        snakeHead.setyGridPosition(grid.getRowCount() - 1);
+      else
+        this.addToGridPosition(0, -1);
+      return;
+    }
+    if (currentDirection == InputController.LEFT) {
+      if (snakeHead.getxGridPosition() < 0)
+        snakeHead.setxGridPosition(grid.getColumnCount() - 1);
+      else
+        this.addToGridPosition(-1, 0);
+      return;
+    }
+    if (currentDirection == InputController.RIGHT) {
+      if (snakeHead.getxGridPosition() > grid.getColumnCount())
+        snakeHead.setxGridPosition(0);
+      else
+        this.addToGridPosition(1, 0);
+      return;
+    }
 
   }
 

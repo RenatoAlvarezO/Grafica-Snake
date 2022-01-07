@@ -12,12 +12,8 @@ public class DesktopLauncher {
 
     config.title = "Snake";
     config.initialBackgroundColor = Color.TEAL;
-    // config.width = 160;
-    // config.height = 90;
     config.width = 1280;
     config.height = 720;
-    // System.out.println("Width => " + config.width);
-    // System.out.println("Height => " + config.height);
     new LwjglApplication(new Game(), config);
   }
 }

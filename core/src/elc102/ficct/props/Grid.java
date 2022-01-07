@@ -8,7 +8,7 @@ public class Grid {
   private int rowCount;
   private int columnCount;
 
-  public Grid(int rowCount, int columnCount) {
+  public Grid(int columnCount, int rowCount) {
     this.rowCount = rowCount;
     this.columnCount = columnCount;
     recalculateCellDimentions();
@@ -39,8 +39,8 @@ public class Grid {
   }
 
   public void recalculateCellDimentions() {
-    this.cellWidth = Gdx.graphics.getWidth() / rowCount;
-    this.cellHeight = Gdx.graphics.getHeight() / columnCount;
+    this.cellWidth = Gdx.graphics.getWidth() / columnCount;
+    this.cellHeight = Gdx.graphics.getHeight() / rowCount;
   }
 // Hay algo raro con esta logica
    public int getXPosition(int x) {

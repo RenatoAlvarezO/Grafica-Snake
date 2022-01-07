@@ -56,7 +56,7 @@ public class Game extends ApplicationAdapter {
 
     xPosition = 0f;
     yPosition = 0f;
-    snake = new Snake(grid.getRowCount() / 2, grid.getColumnCount() / 2);
+    snake = new Snake(grid.getColumnCount() / 2, grid.getRowCount() / 2, grid);
 
     inputController = new InputController(snake);
     inputController.start();
@@ -77,12 +77,12 @@ public class Game extends ApplicationAdapter {
 
     collitionController.foodCollitions();
     if (collitionController.obstacleCollition() || collitionController.snakeSelfCollition()) {
-      inputController.stop(); 
+      inputController.stop();
       gameSpeed.stop();
     }
     batch.begin();
 
-    snake.draw(batch, grid);
+    snake.draw(batch);
     for (Food food : foodList)
       food.draw(batch, grid);
 
