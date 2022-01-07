@@ -76,7 +76,7 @@ public class Game extends ApplicationAdapter {
     }
 
     collitionController.foodCollitions();
-    if (collitionController.obstacleCollition()) {
+    if (collitionController.obstacleCollition() || collitionController.snakeSelfCollition()) {
       inputController.stop(); 
       gameSpeed.stop();
     }

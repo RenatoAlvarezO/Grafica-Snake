@@ -41,4 +41,14 @@ public class CollitionController {
         return true;
     return false;
   }
+
+  public boolean snakeSelfCollition() {
+
+    SnakePart snakeHead = snake.getSnakeHead();
+    List<SnakePart> snakeBody = snake.getSnakeBody();
+    for (int index = 1 ; index < snakeBody.size(); index++)
+      if (AObject.areColliding(snakeHead, snakeBody.get(index)))
+        return true;
+    return false;
+  }
 }

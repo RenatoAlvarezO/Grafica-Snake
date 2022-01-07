@@ -94,4 +94,8 @@ public class Snake {
         !(currentDirection == InputController.LEFT && newDirection == InputController.RIGHT);
 
   }
+
+  public List<SnakePart> getSnakeBody() {
+    return this.snakeBodyList;
+  }
 }
