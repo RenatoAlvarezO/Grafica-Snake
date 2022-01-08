@@ -41,13 +41,31 @@ public class Grid {
   public void recalculateCellDimentions() {
     this.cellWidth = Gdx.graphics.getWidth() / columnCount;
     this.cellHeight = Gdx.graphics.getHeight() / rowCount;
+
+    System.out.println("Width => " + cellWidth);
+    System.out.println("Height => " + cellHeight);
   }
-// Hay algo raro con esta logica
-   public int getXPosition(int x) {
-    return cellWidth * x; 
+
+  // Hay algo raro con esta logica
+  public int getXPosition(int x) {
+
+    return cellWidth * x;
   }
 
   public int getYPosition(int y) {
     return cellHeight * y;
   }
+
+  public boolean isxOutOfBounds(int x) {
+    return x < 0 || x > this.columnCount;
+  }
+
+  public boolean isyOutOfBounds(int y) {
+    return y < 0 || y > this.rowCount;
+  }
+
+  public boolean isOutOfBounds(int x, int y) {
+    return isxOutOfBounds(x) || isyOutOfBounds(y);
+  }
+
 }

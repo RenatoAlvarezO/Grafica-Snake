@@ -20,16 +20,17 @@ public class CollitionController {
     this.obstacleList = obstacleList;
   }
 
-  public void foodCollitions() {
+  public boolean foodCollitions() {
     SnakePart snakeHead = snake.getSnakeHead();
 
     for (int index = 0; index < foodList.size(); index++) {
       if (AObject.areColliding(snakeHead, foodList.get(index))) {
         foodList.remove(index);
         snake.addToTail();
-        return;
+        return true;
       }
     }
+    return false;
   }
 
   public boolean obstacleCollition() {

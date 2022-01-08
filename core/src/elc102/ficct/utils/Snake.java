@@ -76,31 +76,27 @@ public class Snake {
 
     SnakePart snakeHead = snakeBodyList.get(0);
     if (currentDirection == InputController.UP) {
-      if (snakeHead.getyGridPosition() > grid.getRowCount())
+      this.addToGridPosition(0, 1);
+      if (snakeHead.getyGridPosition() > grid.getRowCount() - 1)
         snakeHead.setyGridPosition(0);
-      else
-        this.addToGridPosition(0, 1);
       return;
     }
     if (currentDirection == InputController.DOWN) {
+      this.addToGridPosition(0, -1);
       if (snakeHead.getyGridPosition() < 0)
         snakeHead.setyGridPosition(grid.getRowCount() - 1);
-      else
-        this.addToGridPosition(0, -1);
       return;
     }
     if (currentDirection == InputController.LEFT) {
+      this.addToGridPosition(-1, 0);
       if (snakeHead.getxGridPosition() < 0)
         snakeHead.setxGridPosition(grid.getColumnCount() - 1);
-      else
-        this.addToGridPosition(-1, 0);
       return;
     }
     if (currentDirection == InputController.RIGHT) {
-      if (snakeHead.getxGridPosition() > grid.getColumnCount())
+      this.addToGridPosition(1, 0);
+      if (snakeHead.getxGridPosition() > grid.getColumnCount() - 1)
         snakeHead.setxGridPosition(0);
-      else
-        this.addToGridPosition(1, 0);
       return;
     }
 
